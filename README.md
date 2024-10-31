@@ -8,8 +8,6 @@ This scraper focuses on gathering and organizing press release data from the SP 
 - [Installation](#installation)
 - [Usage](#usage)
   - [Quickstart Example](#quickstart-example)
-- [Details of `SPGlobalScraper`](#details-of-spglobalscraper)
-  - [Function Reference for `utils.py`](#function-reference-for-utilspy)
 - [File Output](#file-output)
   
 ## Overview
