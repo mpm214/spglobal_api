@@ -67,11 +67,16 @@ The `SPGlobalScraper` class in `sp_global_scraper.py` is responsible for:
 ## File Output
 Running the scraper will save the results to a file named `press_releases_{start_year}_{end_year}.csv` in the working directory.
 
-Example of CSV structure:
-| Announced     | Index Name      | GICS Sector | Effective Date | Event_Type       |
-|---------------|-----------------|-------------|----------------|------------------|
-| 2021-12-01    | S&P 500         | Financials  | 2021-12-15     | Corporate Action |
-| ...           | ...             | ...         | ...            | ...              |
+### Example Output Table
+
+| Announced  | Effective_Date | Index_Name       | Action    | Company_Name         | Ticker | GICS_Sector           | Event_Type       |
+|------------|----------------|------------------|-----------|----------------------|--------|------------------------|------------------|
+| 9/24/2024  | 9/30/2024      | S&P 500         | Addition  | Amentum              | AMTM   | Industrials           | Corporate Action |
+| 9/24/2024  | 10/1/2024      | S&P 500         | Deletion  | Bath & Body Works    | BBWI   | Consumer Discretionary| Corporate Action |
+| 10/7/2024  | 10/11/2024     | S&P MidCap 400  | Addition  | DocuSign             | DOCU   | Information Technology| Corporate Action |
+| 10/7/2024  | 10/11/2024     | S&P MidCap 400  | Deletion  | MDU Resources Group  | MDU    | Industrials           | Corporate Action |
+| 10/7/2024  | 10/11/2024     | S&P SmallCap 600| Addition  | MDU Resources Group  | MDU    | Industrials           | Corporate Action |
+| 10/7/2024  | 10/11/2024     | S&P SmallCap 600| Deletion  | Chuy's Holdings      | CHUY   | Consumer Discretionary| Corporate Action |
 
 This structure is consistent regardless of original column names, ensuring ease of analysis for the extracted data.
 
