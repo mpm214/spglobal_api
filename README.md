@@ -1,6 +1,7 @@
 # SP Global Press Release Scraper
 
-This project provides a scraper for gathering and organizing press release data from the SP Global website, particularly focusing on event types such as index reviews and corporate actions. The code uses `sp_global_scraper.py` and utility functions in `utils.py` to extract and structure data in a usable format. 
+This scraper focuses on gathering and organizing press release data from the SP Global website, particularly focusing on index change event types such as additions/deletions of stocks to/from SP Global indices as part of the constituents of the indices. These events are categorized as either index reviews and corporate actions. Index reviews includes quarterly rebalancing from the index review committee. Corporate actions include all events that are not index reviews such as but not limited to: bankcuptcies, mergers, acquisitions, public company going private, move to an OTC exchange, and ticker changes. 
+
 
 ## Table of Contents
 - [Overview](#overview)
@@ -12,10 +13,11 @@ This project provides a scraper for gathering and organizing press release data 
 - [File Output](#file-output)
   
 ## Overview
-The scraper class `SPGlobalScraper` in `sp_global_scraper.py` manages the process of gathering data from SP Global’s press releases by year. Key features include:
-- Extracting data across multiple years.
-- Structuring columns (e.g., merging `GICS Sector`, `GICSSector`, and `GICS Sub-Industry` columns) for consistent output.
-- Forward-filling dates and index names where relevant data is implied.
+The code uses `sp_global_scraper.py` and utility functions in `utils.py` to extract and structure data in a usable format.  The scraper class `SPGlobalScraper` in `sp_global_scraper.py` manages the process of gathering data from SP Global’s press releases by year. 
+
+Key features include:
+- Extracting data across a specified period of time.
+- Structuring columns for consistent output.
 
 ## Installation
 To install and run this code, ensure you have the necessary Python packages:
@@ -39,30 +41,8 @@ scraper.extract_tables_from_all_years()
 
 This code will:
 1. Retrieve relevant press release links.
-2. Extract tables from each URL and standardize the column names.
-3. Fill missing values in `Effective Date` and `Index Name`.
-4. Save the combined data into a CSV file.
-
-## Details of `SPGlobalScraper`
-The `SPGlobalScraper` class in `sp_global_scraper.py` is responsible for:
-1. **Initialization**: Setting the date range and identifying years to search.
-2. **Extracting Data by Year**: Iterating through press releases to gather tables of interest.
-3. **Saving Output**: Outputting the combined data to a CSV file.
-
-### Function Reference for `utils.py`
-
-#### `search_press_website(year)`
-- **Purpose**: Searches the SP Global press release page for URLs of announcements in a given year.
-- **Parameters**: `year` - Year to search as an integer.
-- **Returns**: List of URLs matching the query.
-
-#### `extract_table_from_url(url)`
-- **Purpose**: Retrieves and standardizes table data from a press release URL.
-- **Parameters**: `url` - Full URL of the press release page.
-- **Returns**: DataFrame containing standardized data, with columns such as:
-  - **GICS Sector**: Combines `GICSSector` and `GICS Sub-Industry` into `GICS Sector`.
-  - **Effective Date**: Combines `EffectiveDate` with `Effective Date`.
-- **Data Cleaning**: Forward fills empty cells in `Effective Date` and `Index Name`.
+2. Extract tables from each URL and log any URLs with no table.
+3. Save the combined cleaned data into a CSV file.
 
 ## File Output
 Running the scraper will save the results to a file named `press_releases_{start_year}_{end_year}.csv` in the working directory.
@@ -78,5 +58,5 @@ Running the scraper will save the results to a file named `press_releases_{start
 | 10/7/2024  | 10/11/2024     | S&P SmallCap 600| Addition  | MDU Resources Group  | MDU    | Industrials           | Corporate Action |
 | 10/7/2024  | 10/11/2024     | S&P SmallCap 600| Deletion  | Chuy's Holdings      | CHUY   | Consumer Discretionary| Corporate Action |
 
-This structure is consistent regardless of original column names, ensuring ease of analysis for the extracted data.
+This structure is consistent, ensuring ease of analysis for the extracted data.
 
