@@ -58,5 +58,25 @@ Running the scraper will save the results to a file named `press_releases_{start
 | 10/7/2024  | 10/11/2024     | S&P SmallCap 600| Addition  | MDU Resources Group  | MDU    | Industrials           | Corporate Action |
 | 10/7/2024  | 10/11/2024     | S&P SmallCap 600| Deletion  | Chuy's Holdings      | CHUY   | Consumer Discretionary| Corporate Action |
 
+### Feature definitions:
+
+**Announced:** The date that the press release was published. The first day of public dissemination of the index change news. Releases occur after market hours. The first trading day after the Announced date is the first day the market will acnkowledge this news. 
+
+**Effective Date:** The date that the index change event takes place beginning with the start of market hours. 
+
+**Index Name:** SP Global index names including but not limited to: SP500, SP MidCap 400, SP SmallCap 600, and SP100. 
+
+**Action:** Typically an index is a set number of constituents. This results in each addition needing to be accompanied by a deletion. 
+  - Addition - means the company/ticker was added to the index.
+  - Deletion - means the company/ticker was removed from the index.
+
+**Company Name:** The name of the company of the stock. 
+
+**Ticker:** The ticker of the stock. 
+
+**GICS Sector:** The GICS sector classification of the stock. 
+
+**Event Type:** Distinguishes between events that were the result of an "Index Review" or a "Corporate Action". 
+
 This structure is consistent, ensuring ease of analysis for the extracted data.
 
